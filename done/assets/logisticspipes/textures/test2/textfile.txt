@@ -1,9 +1,0 @@
-    list.filename = this.name.split("/")[this.name.split("/").lastIndex]
-    list.modid = list.filename.split(Regex("-"))[0]
-    list.version = list.filename.removePrefix(list.modid + "-").removeSuffix(".jar")
-    this.stream().map(ZipEntry::getName).forEach { name ->
-        when {
-            name.isPng() -> list.files.add(name)
-            name.isDir() && name.hasSuffix("assets/") && name.hasMatching("textures")-> list.dirs.add(name)
-        }
-    }
